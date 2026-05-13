@@ -33,6 +33,9 @@ def get_challenges():
 def index(request):
     challenges = get_challenges()
     months = list(challenges.keys())
+
+    return render(request, "challenges/index.html", {"months": months})
+
     return HttpResponse(f"""
         <ul>
             {''.join([f"""
