@@ -41,7 +41,7 @@ def index(request):
         </ul>""")
 
 
-def monthly_challenge_by_number(request, month):
+def monthly_challenge_by_number(request, month: int):
 
     challenges = get_challenges()
     months = list(challenges.keys())
@@ -57,13 +57,14 @@ def monthly_challenge_by_number(request, month):
     return HttpResponseRedirect(redirect_path)
 
 
-def monthly_challenge(request, month):
+def monthly_challenge(request, month: str):
 
     challenges = get_challenges()
 
     challenge = challenges.get(month)
 
-    if challenge:
-        return render(request, "challenges/challenge.html", {"challenge": challenge})
-    else:
-        return HttpResponseNotFound(f"Month {month} not found!")
+    return render(
+        request,
+        "challenges/challenge.html", {"challenge": challenge, "month": month},
+        status=200 if challenge else 404
+    )
