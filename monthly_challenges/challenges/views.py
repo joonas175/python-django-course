@@ -30,6 +30,17 @@ def get_challenges():
     }
 
 
+def index(request):
+    challenges = get_challenges()
+    months = list(challenges.keys())
+    return HttpResponse(f"""
+        <ul>
+            {''.join([f"""
+                <li><a href=\"{reverse('month-challenge', args=[month])}\">{month.capitalize()}</a></li>
+            """ for month in months])}
+        </ul>""")
+
+
 def monthly_challenge_by_number(request, month):
 
     challenges = get_challenges()
@@ -53,6 +64,7 @@ def monthly_challenge(request, month):
     challenge = challenges.get(month)
 
     if challenge:
-        return HttpResponse(challenge)
+        response_data = f"<h1>{challenge}</h1><p><a href=\"{reverse('challenges-index')}\">Back to index</a></p>"
+        return HttpResponse(response_data)
     else:
         return HttpResponseNotFound(f"Month {month} not found!")
