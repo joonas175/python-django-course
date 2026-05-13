@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
@@ -65,7 +64,6 @@ def monthly_challenge(request, month):
     challenge = challenges.get(month)
 
     if challenge:
-        response_data = render_to_string("challenges/challenge.html", {"challenge": challenge})
-        return HttpResponse(response_data)
+        return render(request, "challenges/challenge.html", {"challenge": challenge})
     else:
         return HttpResponseNotFound(f"Month {month} not found!")
