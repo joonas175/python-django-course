@@ -3,11 +3,12 @@
 {% block title %}{{ month|capfirst }} Challenge{% endblock title %}
 
 {% block content %}
+{% include "challenges/navbar.html" %}
+
     {% if challenge and month %}
         <h1>Challenge for {{ month|capfirst }}</h1>
         <h2>{{ challenge }}</h2>
     {% else %}
         <h1>No challenge available</h1>
     {% endif %}
-    <a href="{% url 'challenges-index' %}">Back to all challenges</a>
 {% endblock content %}
