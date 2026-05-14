@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
 
 # Create your views here.
@@ -50,7 +50,7 @@ def monthly_challenge_by_number(request, month: int):
     months = list(challenges.keys())
 
     if month > len(months):
-        return HttpResponseNotFound("Invalid month!")
+        raise Http404("Invalid month!")
 
     redirect_month = months[month - 1]
 
@@ -65,6 +65,9 @@ def monthly_challenge(request, month: str):
     challenges = get_challenges()
 
     challenge = challenges.get(month)
+
+    if not challenge:
+        raise Http404("Challenge not found")
 
     return render(
         request,
