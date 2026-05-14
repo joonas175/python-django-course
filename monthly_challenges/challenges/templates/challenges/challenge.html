@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Challenge</title>
-</head>
+{% extends "layout.html" %}
+{% block title %}{{ month|capfirst }} Challenge{% endblock title %}
 
-<body>
+{% block content %}
     {% if challenge and month %}
         <h1>Challenge for {{ month|capfirst }}</h1>
         <h2>{{ challenge }}</h2>
@@ -15,6 +10,4 @@
         <h1>No challenge available</h1>
     {% endif %}
     <a href="{% url 'challenges-index' %}">Back to all challenges</a>
-</body>
-
-</html>
+{% endblock content %}
