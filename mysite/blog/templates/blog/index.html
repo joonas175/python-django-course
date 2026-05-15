@@ -8,14 +8,7 @@
 {% endblock styles %}
 
 {% block content %}
-<header id="main-navigation">
-    <h1><a href="{% url 'starting-page' %}">Jontun Blogi</a></h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'posts' %}">Kaikki Postaukset</a></li>
-        </ul>
-    </nav>
-</header>
+
 <section id="welcome">
     <header>
         <img src="{% static 'blog/images/max.png' %}" alt="Joonas - Blogin omistaja" id="owner-image">
@@ -33,17 +26,7 @@
 <section id="latest-posts">
     <h2>Viimeisimmät Postaukset</h2>
     <ul>
-        <li>
-            <article class="post">
-                <a href="#">
-                    <img src="{% static 'blog/images/mountains.jpg' %}" alt="Postauksen kuva" class="post-image">
-                    <div class="post-content">
-                        <h3 class="post-title">Postauksen Otsikko</h3>
-                        <p class="post-excerpt">Tämä on lyhyt tiivistelmä</p>
-                    </div>
-                </a>
-            </article>
-        </li>
+       {% include "blog/includes/post.html" %}
     </ul>
 </section>
 

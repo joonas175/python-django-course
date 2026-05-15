@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All posts{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'blog/posts.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<section id="all-posts">
+    <h2>Kaikki Postaukset</h2>
+    <ul>
+        {% include "blog/includes/post.html" %}
+        {% include "blog/includes/post.html" %}
+        {% include "blog/includes/post.html" %}
+        {% include "blog/includes/post.html" %}
+    </ul>
+</section>
+{% endblock content %}

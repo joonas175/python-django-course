@@ -1,0 +1,12 @@
+{% load static %}
+<li>
+    <article class="post">
+        <a href="{% url "post-detail-page" "the-mountains" %}">
+            <img src="{% static 'blog/images/mountains.jpg' %}" alt="Postauksen kuva" class="post-image">
+            <div class="post-content">
+                <h3 class="post-title">Postauksen Otsikko</h3>
+                <p class="post-excerpt">Tämä on lyhyt tiivistelmä</p>
+            </div>
+        </a>
+    </article>
+</li>
