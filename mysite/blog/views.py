@@ -9,5 +9,5 @@ def posts(request):
     return render(request, 'blog/posts.html')
 
 def post(request, slug):
-    pass
+    return render(request, 'blog/post-detail.html')
 

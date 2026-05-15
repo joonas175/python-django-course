@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}This Post title{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<section id="summary">
+    <h2>Postauksen Otsikko</h2>
+    <article>
+        <img src="{% static "blog/images/mountains.jpg" %}" alt="Postauksen otsikko">
+        <address>By Joonas</address>
+        <div>
+            Last updated on <time>April 15th</time>
+        </div>
+    </article>
+
+    <main>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Maiores sapiente culpa odio est, 
+            quae blanditiis corrupti eius voluptas molestias quaerat 
+            consectetur animi obcaecati unde necessitatibus totam debitis excepturi voluptates ut?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Maiores sapiente culpa odio est, 
+            quae blanditiis corrupti eius voluptas molestias quaerat 
+            consectetur animi obcaecati unde necessitatibus totam debitis excepturi voluptates ut?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Maiores sapiente culpa odio est, 
+            quae blanditiis corrupti eius voluptas molestias quaerat 
+            consectetur animi obcaecati unde necessitatibus totam debitis excepturi voluptates ut?
+        </p>
+    </main>
+</section>
+{% endblock content %}
