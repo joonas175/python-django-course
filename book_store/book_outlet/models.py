@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.urls import reverse
 
 # Create your models here.
 
@@ -14,6 +15,9 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("book-detail", kwargs={"book_id": self.pk})
 
 
 # To create and save:
