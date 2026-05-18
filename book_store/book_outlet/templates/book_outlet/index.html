@@ -3,6 +3,10 @@
 {% block title %}Book Outlet{% endblock title %}
 
 {% block content %}
-<h1>Welcome to the Book Outlet!</h1>
-<p>Find your favorite books at unbeatable prices.</p>
+
+<ul>
+    {% for book in all_books %}
+    <li><a href="{% url 'book-detail' book.id %}">{{ book.title }}</a> - {{ book.author }}</li>
+    {% endfor %}
+</ul>
 {% endblock content %}

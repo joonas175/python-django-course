@@ -3,6 +3,8 @@
 {% block title %}Book Outlet{% endblock title %}
 
 {% block content %}
-<h1>Welcome to the Book Outlet!</h1>
-<p>Find your favorite books at unbeatable prices.</p>
+<h1>{{ book.title }}</h1>
+<p>Author: {{ book.author }}</p>
+<p>Price: ${{ book.price }}</p>
+
 {% endblock content %}
