@@ -2,6 +2,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.urls import reverse
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -12,9 +13,14 @@ class Book(models.Model):
     price = models.DecimalField(
         max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     publication_date = models.DateField(null=True, blank=True)
+    slug = models.SlugField(default="", null=False)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("book-detail", kwargs={"book_id": self.pk})
