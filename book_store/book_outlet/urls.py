@@ -20,5 +20,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('books/<int:book_id>/', views.book_detail, name='book-detail')
+    path('books/<slug:book_slug>/', views.book_detail, name='book-detail')
 ]

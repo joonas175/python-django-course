@@ -10,13 +10,13 @@ def index(request):
         'all_books': all_books
     })
 
-def book_detail(request, book_id):
+def book_detail(request, book_slug):
     # try:
     #    book = Book.objects.get(id=book_id)
     # except Book.DoesNotExist:
     #     raise Http404("Book does not exist")
     
-    book = get_object_or_404(Book, id=book_id)
+    book = get_object_or_404(Book, slug=book_slug)
 
     return render(request, 'book_outlet/book_detail.html', {
         'book': book
