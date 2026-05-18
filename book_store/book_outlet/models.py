@@ -13,7 +13,7 @@ class Book(models.Model):
     price = models.DecimalField(
         max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     publication_date = models.DateField(null=True, blank=True)
-    slug = models.SlugField(default="", null=False, db_index=True, blank=True, editable=False)
+    slug = models.SlugField(default="", null=False, db_index=True)
 
     def __str__(self):
         return self.title
