@@ -49,7 +49,7 @@ class Book(models.Model):
         max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     publication_date = models.DateField(null=True, blank=True)
     slug = models.SlugField(default="", null=False, db_index=True)
-    published_countries = models.ManyToManyField(Country)
+    published_countries = models.ManyToManyField(Country, related_name="books")
 
     def __str__(self):
         return self.title
