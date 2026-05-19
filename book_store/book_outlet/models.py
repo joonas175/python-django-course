@@ -7,6 +7,14 @@ from django.utils.text import slugify
 # Create your models here.
 
 
+class Country(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=2)
+
+    def __str__(self):
+        return self.name
+
+
 class Address(models.Model):
     street = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
@@ -41,6 +49,7 @@ class Book(models.Model):
         max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     publication_date = models.DateField(null=True, blank=True)
     slug = models.SlugField(default="", null=False, db_index=True)
+    published_countries = models.ManyToManyField(Country)
 
     def __str__(self):
         return self.title
