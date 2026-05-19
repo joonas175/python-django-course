@@ -16,10 +16,15 @@ class Address(models.Model):
     def __str__(self):
         return f"{self.street}, {self.postal_code} {self.city}, {self.country}"
 
+    class Meta:
+        verbose_name_plural = "Addresses"
+
+
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
+    address = models.OneToOneField(
+        Address, on_delete=models.CASCADE, null=True)
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
@@ -30,7 +35,8 @@ class Author(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name="books")
+    author = models.ForeignKey(
+        Author, on_delete=models.CASCADE, null=True, related_name="books")
     price = models.DecimalField(
         max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     publication_date = models.DateField(null=True, blank=True)
