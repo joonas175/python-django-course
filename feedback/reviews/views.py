@@ -9,6 +9,9 @@ from django.views.generic import TemplateView, FormView
 # Create your views here.
 
 
+# CreateView - for creating new objects
+# Automaattinen ModelForm modelista. Ei tarvita form_valid.
+
 class ReviewView(FormView):
     template_name = 'reviews/review.html'
     form_class = ReviewForm
