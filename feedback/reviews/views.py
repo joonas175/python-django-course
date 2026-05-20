@@ -15,6 +15,10 @@ def review(request: HttpRequest):
             name = form.cleaned_data['user_name']
             print(f'Submitted: {name}')
             return HttpResponseRedirect(reverse('thank_you'))
+        else:
+            return render(request, 'reviews/review.html', {
+                'form': form
+            })
 
     form = ReviewForm()
 
