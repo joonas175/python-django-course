@@ -7,8 +7,7 @@
 
     <form method="POST">
         {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name">
+        {{ form }}
 
         <button>Send</button>
     </form>
